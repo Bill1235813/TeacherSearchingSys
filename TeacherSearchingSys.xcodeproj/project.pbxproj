@@ -10,6 +10,7 @@
 		5346A5B7878C1BBB32BBE220 /* Pods_TeacherSearchingSys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71403E87C6AFD48B9259DF13 /* Pods_TeacherSearchingSys.framework */; };
 		AB1ACCEE20BA95A900D1E5FA /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1ACCED20BA95A800D1E5FA /* BookmarkViewController.swift */; };
 		AB1ACCF120BD215100D1E5FA /* VCInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1ACCF020BD215100D1E5FA /* VCInfo.swift */; };
+		AB1ACCF320BE6D8C00D1E5FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB1ACCF220BE6D8B00D1E5FA /* Assets.xcassets */; };
 		AB2EFC7820B8C450000DB52F /* PersonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2EFC7720B8C450000DB52F /* PersonInfo.swift */; };
 		AB2EFC7A20B93A2D000DB52F /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2EFC7920B93A2D000DB52F /* School.swift */; };
 		AB2EFC7C20B93AF5000DB52F /* DepartmentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2EFC7B20B93AF5000DB52F /* DepartmentInfo.swift */; };
@@ -30,6 +31,7 @@
 		71403E87C6AFD48B9259DF13 /* Pods_TeacherSearchingSys.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeacherSearchingSys.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1ACCED20BA95A800D1E5FA /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		AB1ACCF020BD215100D1E5FA /* VCInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCInfo.swift; sourceTree = "<group>"; };
+		AB1ACCF220BE6D8B00D1E5FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB2EFC7720B8C450000DB52F /* PersonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfo.swift; sourceTree = "<group>"; };
 		AB2EFC7920B93A2D000DB52F /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
 		AB2EFC7B20B93AF5000DB52F /* DepartmentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentInfo.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		AB4D535E20B7EB61002D563C /* Suppoting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AB1ACCF220BE6D8B00D1E5FA /* Assets.xcassets */,
 				AB4D535520B7E623002D563C /* LaunchScreen.storyboard */,
 				AB4D534C20B7E621002D563C /* AppDelegate.swift */,
 			);
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB4D535720B7E623002D563C /* LaunchScreen.storyboard in Resources */,
+				AB1ACCF320BE6D8C00D1E5FA /* Assets.xcassets in Resources */,
 				AB4D535220B7E621002D563C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
