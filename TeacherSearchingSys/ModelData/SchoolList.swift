@@ -9,7 +9,7 @@
 import Foundation
 
 class SchoolList {
-    static let schoolNames = ["清华大学", "同济大学", "中央美术学院", "江南大学", "浙江大学"]
+    static let schoolNames = ["清华大学", "同济大学", "中央美术学院", "江南大学", "浙江大学", "南京艺术学院", "湖南大学", "苏州大学", "中国美术学院"]
     static var schools = [String : School]()
     
     init() {
