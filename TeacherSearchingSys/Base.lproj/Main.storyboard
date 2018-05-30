@@ -1,24 +1,276 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YQP-sr-3dU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="b2Y-nP-enZ">
+            <objects>
+                <navigationController id="YQP-sr-3dU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rfm-S5-Sk9">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0078431372549019607" green="0.039215686274509803" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="TZU-m5-KYG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lct-HS-eAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-991" y="29"/>
+        </scene>
+        <!--Bookmark View Controller-->
+        <scene sceneID="pSu-fk-MFz">
+            <objects>
+                <viewController title="Bookmark View Controller" id="dNm-Vr-qxH" customClass="BookmarkViewController" customModule="TeacherSearchingSys" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iLD-Id-0u8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42D-Ik-tFd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0078431372550000003" green="0.023529411760000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="XPh-A4-MfF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="标记老师" id="x4H-dC-0mu"/>
+                    <connections>
+                        <outlet property="bookmarkScrollView" destination="42D-Ik-tFd" id="wYb-Lp-abS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L9O-Me-J6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="542" y="-699"/>
+        </scene>
+        <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="TeacherSearchingSys" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入学校/学系/老师" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tfd-R3-6P3">
+                                <rect key="frame" x="20" y="64" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaF-gR-YSt">
+                                <rect key="frame" x="20" y="94" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cTK-9w-7AA"/>
+                                    <constraint firstAttribute="width" constant="50" id="mw3-5h-m2A"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="star"/>
+                                <connections>
+                                    <segue destination="dNm-Vr-qxH" kind="show" id="UX1-A8-Iz1"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ThF-5G-zKe">
+                                <rect key="frame" x="0.0" y="145" width="375" height="522"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="uKi-zd-S7d"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0078431372549019607" green="0.023529411764705882" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tfd-R3-6P3" firstAttribute="top" secondItem="K5w-vo-GlT" secondAttribute="top" id="Nn3-2I-TxS"/>
+                            <constraint firstItem="tfd-R3-6P3" firstAttribute="leading" secondItem="K5w-vo-GlT" secondAttribute="leading" constant="20" id="TTg-FI-r49"/>
+                            <constraint firstItem="HaF-gR-YSt" firstAttribute="top" secondItem="tfd-R3-6P3" secondAttribute="bottom" id="hww-HR-Yq0"/>
+                            <constraint firstItem="tfd-R3-6P3" firstAttribute="centerX" secondItem="K5w-vo-GlT" secondAttribute="centerX" id="nob-cO-Y3C"/>
+                            <constraint firstItem="K5w-vo-GlT" firstAttribute="trailing" secondItem="tfd-R3-6P3" secondAttribute="trailing" constant="20" id="oM2-GS-2gI"/>
+                            <constraint firstItem="HaF-gR-YSt" firstAttribute="leading" secondItem="K5w-vo-GlT" secondAttribute="leading" constant="20" id="zbw-0v-MpT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="K5w-vo-GlT"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Vnq-SW-TjU">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="bbA-9H-nFR"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bookmarkButton" destination="HaF-gR-YSt" id="Ece-5b-v1I"/>
+                        <outlet property="mapScrollView" destination="ThF-5G-zKe" id="MJi-2C-YYN"/>
+                        <outlet property="searchingText" destination="tfd-R3-6P3" id="GPg-Vj-YPX"/>
+                        <segue destination="7Jb-jZ-Wq9" kind="show" identifier="toDepartment" id="aGG-Yn-gxm"/>
+                        <segue destination="dNm-Vr-qxH" kind="show" identifier="toBookmark" id="6fh-uK-hkd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-223.19999999999999" y="29.23538230884558"/>
+        </scene>
+        <!--Department View Controller-->
+        <scene sceneID="ehf-z3-07K">
+            <objects>
+                <viewController title="Department View Controller" id="7Jb-jZ-Wq9" customClass="DepartmentViewController" customModule="TeacherSearchingSys" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xMK-V0-cq4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jnU-UK-3Ch">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0078431372549019607" green="0.023529411764705882" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="arT-Fr-Bsk"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="下属学院" id="So5-Zr-zRa" colorLabel="IBBuiltInLabel-Gray"/>
+                    <connections>
+                        <outlet property="departmentNavigation" destination="So5-Zr-zRa" id="L1T-AS-IcP"/>
+                        <outlet property="departmentScrollView" destination="jnU-UK-3Ch" id="aU4-Jd-cby"/>
+                        <segue destination="kUN-gL-qZD" kind="show" identifier="toSpecific" id="4sG-EX-h3c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yPs-se-hmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="541.60000000000002" y="29.23538230884558"/>
+        </scene>
+        <!--Specific Department VC-->
+        <scene sceneID="b2N-Kf-avM">
+            <objects>
+                <viewController title="Specific Department VC" id="kUN-gL-qZD" customClass="SpecificDeptViewController" customModule="TeacherSearchingSys" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YKB-at-Rul">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cUN-Fy-0lb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0078431372550000003" green="0.023529411760000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="paO-UG-dDd"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="工业设计" id="ZuY-ap-bMv"/>
+                    <connections>
+                        <outlet property="specificNavigation" destination="ZuY-ap-bMv" id="jhe-TJ-WNJ"/>
+                        <outlet property="specificScrollView" destination="cUN-Fy-0lb" id="zw4-La-n9d"/>
+                        <segue destination="tex-F8-8k1" kind="show" identifier="toPerson" id="TnH-xl-7J7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ejn-xT-Nnm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1300" y="29.23538230884558"/>
+        </scene>
+        <!--Person View Controller-->
+        <scene sceneID="dw9-kj-8uF">
+            <objects>
+                <viewController title="Person View Controller" id="tex-F8-8k1" customClass="PersonViewController" customModule="TeacherSearchingSys" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DW9-nP-CoQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9p-oo-Vhp">
+                                <rect key="frame" x="72" y="606" width="231" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEi-eg-WNT">
+                                <rect key="frame" x="325" y="64" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="7cE-6u-Mhl"/>
+                                    <constraint firstAttribute="width" constant="50" id="WC0-5C-JRB"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="ekv-Yv-Gl5"/>
+                                    <constraint firstAttribute="height" constant="50" id="gWP-o0-ra2"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="star"/>
+                                <connections>
+                                    <action selector="addBookmark:" destination="tex-F8-8k1" eventType="touchUpInside" id="uyD-HN-0Br"/>
+                                </connections>
+                            </button>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zK2-51-Mqm">
+                                <rect key="frame" x="325" y="114" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="4iM-ui-l7I"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="7zL-F8-DKu"/>
+                                    <constraint firstAttribute="height" constant="50" id="FH2-kf-Epg"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="MJ0-WI-fjZ"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="findSimilar:" destination="tex-F8-8k1" eventType="touchUpInside" id="Xe9-kj-RAe"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4dH-c7-8YT">
+                                <rect key="frame" x="0.0" y="147" width="375" height="422"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0078431372550000003" green="0.023529411760000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="b6Z-Aw-QlP" firstAttribute="trailing" secondItem="zK2-51-Mqm" secondAttribute="trailing" id="8Ge-WQ-idO"/>
+                            <constraint firstItem="lEi-eg-WNT" firstAttribute="top" secondItem="b6Z-Aw-QlP" secondAttribute="top" id="Bcd-iM-KFs"/>
+                            <constraint firstItem="zK2-51-Mqm" firstAttribute="top" secondItem="lEi-eg-WNT" secondAttribute="bottom" id="cCj-ga-TjN"/>
+                            <constraint firstItem="b6Z-Aw-QlP" firstAttribute="trailing" secondItem="lEi-eg-WNT" secondAttribute="trailing" id="yDb-B4-ArT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="b6Z-Aw-QlP"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Name" id="N6X-tG-7P0"/>
+                    <connections>
+                        <outlet property="bookmarkButton" destination="lEi-eg-WNT" id="yCf-vu-AmH"/>
+                        <outlet property="describeText" destination="X9p-oo-Vhp" id="ENw-jb-WL8"/>
+                        <outlet property="personNavigation" destination="N6X-tG-7P0" id="wjn-9F-Ebf"/>
+                        <outlet property="personScrollView" destination="4dH-c7-8YT" id="pOp-Dv-zFx"/>
+                        <outlet property="similarButton" destination="zK2-51-Mqm" id="Gly-E8-sc7"/>
+                        <segue destination="D86-Eb-cZh" kind="show" identifier="toSimilar" id="oYc-1A-i5p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cS5-br-neZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2096.8000000000002" y="29.23538230884558"/>
+        </scene>
+        <!--FindSimilar View Controller-->
+        <scene sceneID="ENr-9a-cUR">
+            <objects>
+                <viewController title="FindSimilar View Controller" id="D86-Eb-cZh" customClass="FindSimilarViewController" customModule="TeacherSearchingSys" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sjy-M5-Whc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hnX-us-Zh0">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0078431372550000003" green="0.023529411760000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="7BF-nQ-luI"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="找相似" id="oCb-Jj-AEY"/>
+                    <connections>
+                        <outlet property="findSimilarScrollView" destination="hnX-us-Zh0" id="tF8-iD-f50"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oMC-of-MNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2871.1999999999998" y="29.23538230884558"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="star" width="96" height="96"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6fh-uK-hkd"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

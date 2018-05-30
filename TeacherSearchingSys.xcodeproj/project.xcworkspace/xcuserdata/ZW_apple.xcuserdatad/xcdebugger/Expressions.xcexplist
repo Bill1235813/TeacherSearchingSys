@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "DepartmentViewController.viewDidLoad():DepartmentViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapViewController.prepare(for:sender:):MapViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
