@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MapViewController: UIViewController, UIScrollViewDelegate {
+class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegate {
     var schoolList = SchoolList()
     var icons = [UIButton]()
     var images = [UIButton]()
@@ -17,7 +17,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
     var selectedSchoolImg = UIButton()
     
     let mapImage = UIImageView(image: UIImage(named: "map"))
-
+    
     @IBOutlet weak var searchingText: UITextField!
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var mapScrollView: UIScrollView!
@@ -27,9 +27,14 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
         
         setScrollView()
         addButtons()
+        
+        searchingText.delegate = self
         bookmarkButton.setImage(UIImage(named: VCInfo.notSelectedStar), for: .normal)
         view.addSubview(bookmarkButton)
         view.addSubview(searchingText)
+        
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -60,6 +65,10 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @objc func CentralArtEnter(_ sender: UIButton) {
         enableGesture()
         sender.removeFromSuperview()
@@ -87,6 +96,12 @@ class MapViewController: UIViewController, UIScrollViewDelegate {
             enableGesture()
             selectedSchoolImg.removeFromSuperview()
         }
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
     }
     
     func disableGesture() {
