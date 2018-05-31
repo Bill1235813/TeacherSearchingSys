@@ -14,13 +14,15 @@ class VCInfo {
     static let radarImageRatio = CGFloat(75.0/70.0)
     static let radarImageRatioBlank = CGFloat(1.25)
     static let radarImageRatioNameOnly = CGFloat(7.5)
-    static let faceImageRatio = CGFloat(2)
+    static let faceImageRatio = CGFloat(3)
+    static let noFaceImageRatio = CGFloat(3.5)
     static let noFace = "no-image-face"
     
     static let similarImage = "分析相似"
     static let notSelectedStar = "星星"
+    static let mapStar = "首页-标记过老师列表"
     static let selectedStar = "星星-按下"
-    static let select = "icons8-record-30"
+    static let select = "选取30" //"icons8-record-60"
     static let notSelectedCircle = "选中-空心2"
     static let selectedCircle = "选中-实心2"
     

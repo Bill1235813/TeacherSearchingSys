@@ -29,7 +29,7 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
         addButtons()
         
         searchingText.delegate = self
-        bookmarkButton.setImage(UIImage(named: VCInfo.notSelectedStar), for: .normal)
+        bookmarkButton.setImage(UIImage(named: VCInfo.mapStar), for: .normal)
         view.addSubview(bookmarkButton)
         view.addSubview(searchingText)
         

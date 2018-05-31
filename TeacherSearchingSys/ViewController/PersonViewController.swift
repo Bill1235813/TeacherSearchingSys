@@ -87,16 +87,18 @@ class PersonViewController: UIViewController {
         // add bar
         VCInfo.addBar(in: personScrollView, with: yPosition, of: width/VCInfo.radarImageRatioNameOnly)
         // add face
+        var faceRatio = VCInfo.faceImageRatio
         var faceImg = UIImage(named: professor.imageFace)
         if faceImg == nil {
             faceImg = UIImage(named: VCInfo.noFace)
+            faceRatio = VCInfo.noFaceImageRatio
         }
         let faceView = UIImageView()
-        let faceX = (width - width/VCInfo.faceImageRatio)/2
-        let faceY = (yPosition + width/VCInfo.radarImageRatioNameOnly)/2 - width/VCInfo.faceImageRatio/2
+        let faceX = (width - width/faceRatio)/2
+        let faceY = (yPosition + width/VCInfo.radarImageRatioNameOnly)/2 - width/faceRatio/2
         faceView.image = faceImg
         faceView.contentMode = .scaleAspectFit
-        faceView.frame = CGRect(x: faceX, y: faceY, width: width/VCInfo.faceImageRatio, height: width/VCInfo.faceImageRatio)
+        faceView.frame = CGRect(x: faceX, y: faceY, width: width/faceRatio, height: width/faceRatio)
         personScrollView.addSubview(faceView)
         // add label
         var text = String()
