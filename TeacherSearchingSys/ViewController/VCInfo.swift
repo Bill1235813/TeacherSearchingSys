@@ -10,12 +10,20 @@ import Foundation
 import UIKit
 
 class VCInfo {
+    static let zoomRatio = CGFloat(3)
+    static let doubleTapRatio = CGFloat(4)
+    
+    static let backgroundColor = 0x020621
+    static let separateColor = 0x020f32
+    static let shadowOpacity = 0.5
+    static let fullOpacity = 1.0
+    
     static let barSize = CGFloat(20)
     static let radarImageRatio = CGFloat(75.0/70.0)
     static let radarImageRatioBlank = CGFloat(1.25)
     static let radarImageRatioNameOnly = CGFloat(7.5)
-    static let faceImageRatio = CGFloat(3)
-    static let noFaceImageRatio = CGFloat(3.5)
+    static let faceImageRatio = CGFloat(2.5)
+    static let noFaceImageRatio = CGFloat(2)
     static let noFace = "no-image-face"
     
     static let similarImage = "分析相似"

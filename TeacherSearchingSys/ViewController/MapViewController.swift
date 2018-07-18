@@ -27,9 +27,9 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
         
         setScrollView()
         addButtons()
+        setSearchingText()
+        setBookmarkButton()
         
-        searchingText.delegate = self
-        bookmarkButton.setImage(UIImage(named: VCInfo.mapStar), for: .normal)
         view.addSubview(bookmarkButton)
         view.addSubview(searchingText)
         
@@ -63,6 +63,13 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
                 nextController.school = SchoolList.schools[button.titleLabel!.text!]!
             }
         }
+    }
+    
+    @objc func goBookmark(_ sender: UIButton) {
+        if sender.titleLabel?.text != nil {
+            performSegue(withIdentifier: "toBookmark", sender: sender)
+        }
+//        clearText()
     }
     
     @objc func dismissKeyboard() {
@@ -99,17 +106,33 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
         view.endEditing(true)
     }
     
+    @objc func handleDoubleTapScrollView(recognizer: UITapGestureRecognizer) {
+        if !imageFlag {
+            if mapScrollView.zoomScale == 1 {
+                mapScrollView.zoom(to: zoomRectForScale(scale: VCInfo.doubleTapRatio, center: recognizer.location(in: recognizer.view)), animated: true)
+            } else {
+                mapScrollView.setZoomScale(1, animated: true)
+            }
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return false
     }
     
-    func disableGesture() {
+    func clearText() {
         searchingText.text = ""
+    }
+    
+    func disableGesture() {
+//        clearText()
         imageFlag = true
         mapScrollView.pinchGestureRecognizer?.isEnabled = false
         mapScrollView.panGestureRecognizer.isEnabled = false
         mapImage.isUserInteractionEnabled = false
+        mapImage.layer.backgroundColor = UIColor(rgb: VCInfo.backgroundColor).cgColor
+        mapImage.layer.opacity = VCInfo.shadowOpacity
         bookmarkButton.isEnabled = false
         searchingText.isEnabled = false
     }
@@ -118,9 +141,20 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
         mapScrollView.pinchGestureRecognizer?.isEnabled = true
         mapScrollView.panGestureRecognizer.isEnabled = true
         mapImage.isUserInteractionEnabled = true
+        mapImage.layer.opacity = VCInfo.fullOpacity
         bookmarkButton.isEnabled = true
         searchingText.isEnabled = true
         imageFlag = false
+    }
+    
+    func setSearchingText() {
+        searchingText.delegate = self
+        searchingText.clearButtonMode = UITextFieldViewMode.always
+    }
+    
+    func setBookmarkButton() {
+        bookmarkButton.setImage(UIImage(named: VCInfo.mapStar), for: .normal)
+        bookmarkButton.addTarget(self, action: #selector(goBookmark(_:)), for: .touchUpInside)
     }
     
     func addButtons() {
@@ -185,12 +219,15 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
         let imageViewTap = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped))
         imageViewTap.numberOfTapsRequired = 1
         mapScrollView.addGestureRecognizer(imageViewTap)
+        let imageViewDoubleTap = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTapScrollView(recognizer:)))
+        imageViewDoubleTap.numberOfTapsRequired = 2
+        mapScrollView.addGestureRecognizer(imageViewDoubleTap)
         let width = view.frame.width
         let height = view.frame.width / CGFloat(School.map.0 / School.map.1)
         let mapY = (view.frame.height - view.frame.width / CGFloat(School.map.0 / School.map.1)) / 2
         mapImage.frame = CGRect(x: 0, y: mapY, width: width, height: height)
         mapImage.isUserInteractionEnabled = true
-//        mapImage.contentMode = .scaleAspectFit
+//        mapScrollView.contentMode = .scaleAspectFit
         mapScrollView.addSubview(mapImage)
     }
     
@@ -198,12 +235,40 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
         return mapImage
     }
     
+    func zoomRectForScale(scale: CGFloat, center: CGPoint) -> CGRect {
+        var zoomRect = CGRect.zero
+        zoomRect.size.height = mapImage.frame.size.height / scale
+        zoomRect.size.width  = mapImage.frame.size.width  / scale
+        let newCenter = mapImage.convert(center, from: mapScrollView)
+        zoomRect.origin.x = newCenter.x - (zoomRect.size.width / 2.0)
+        zoomRect.origin.y = newCenter.y - (zoomRect.size.height / 2.0)
+        return zoomRect
+    }
+    
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        if scrollView.zoomScale < 3 {
+        if scrollView.zoomScale < VCInfo.zoomRatio {
                 removeButtons()
         } else {
                 setButtons()
         }
+    }
+}
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+
+        self.init(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
     }
 }
 

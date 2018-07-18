@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YQP-sr-3dU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YQP-sr-3dU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -77,7 +77,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="star"/>
                                 <connections>
-                                    <segue destination="dNm-Vr-qxH" kind="show" id="UX1-A8-Iz1"/>
+                                    <action selector="goBookmark:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l8j-A4-0fV"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ThF-5G-zKe">
@@ -269,8 +269,5 @@
     <resources>
         <image name="star" width="96" height="96"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="6fh-uK-hkd"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
