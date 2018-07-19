@@ -63,6 +63,8 @@ class PersonViewController: UIViewController {
     
     func setImageIcon() {
         similarButton.setImage(similarImg, for: .normal)
+        similarButton.frame = CGRect(x: (view.frame.maxX - VCInfo.smallButtonSize), y: (view.frame.minY + VCInfo.smallButtonSize), width: VCInfo.smallButtonSize, height: VCInfo.smallButtonSize)
+        bookmarkButton.frame = CGRect(x: (view.frame.maxX - VCInfo.smallButtonSize), y: view.frame.minY, width: VCInfo.smallButtonSize, height: VCInfo.smallButtonSize)
         if professor.marked {
             bookmarkButton.setImage(markedImg, for: .normal)
         } else {
@@ -74,18 +76,6 @@ class PersonViewController: UIViewController {
         personScrollView.frame = view.frame
         personScrollView.isScrollEnabled = true
         personScrollView.isUserInteractionEnabled = true
-        // add image
-        let professorImg = UIImage(named: professor.imageWithName)!
-        let imgRatio = VCInfo.radarImageRatio
-        let imageView = UIImageView()
-        imageView.image = professorImg
-        let width = personScrollView.frame.width
-        let height = personScrollView.frame.width / CGFloat(imgRatio)
-        let yPosition = (personScrollView.frame.height - height)/2
-        imageView.frame = CGRect(x: 0, y: yPosition, width: width, height: height)
-        personScrollView.addSubview(imageView)
-        // add bar
-        VCInfo.addBar(in: personScrollView, with: yPosition, of: width/VCInfo.radarImageRatioNameOnly)
         // add face
         var faceRatio = VCInfo.faceImageRatio
         var faceImg = UIImage(named: professor.imageFace)
@@ -94,11 +84,22 @@ class PersonViewController: UIViewController {
             faceRatio = VCInfo.noFaceImageRatio
         }
         let faceView = UIImageView()
-        let faceX = (width - width/faceRatio)/2
-        let faceY = (yPosition + width/VCInfo.radarImageRatioNameOnly)/2 - width/faceRatio/2
+        let faceX = (view.frame.width - view.frame.width/faceRatio) / 2
+        let faceY = (view.frame.minY + VCInfo.smallButtonSize / 2)
         faceView.image = faceImg
         faceView.contentMode = .scaleAspectFit
-        faceView.frame = CGRect(x: faceX, y: faceY, width: width/faceRatio, height: width/faceRatio)
+        faceView.frame = CGRect(x: faceX, y: faceY, width: view.frame.width/faceRatio, height: view.frame.width/faceRatio)
+        // add image
+        let professorImg = UIImage(named: professor.imageWithName)!
+        let imageView = UIImageView()
+        imageView.image = professorImg
+        let width = personScrollView.frame.width
+        let height = personScrollView.frame.width / VCInfo.radarImageRatio
+        let yPosition = faceY + view.frame.width/faceRatio - width/VCInfo.radarImageRatioNameOnly/2
+        imageView.frame = CGRect(x: 0, y: yPosition, width: width, height: height)
+        personScrollView.addSubview(imageView)
+        // add bar
+        VCInfo.addBar(in: personScrollView, with: yPosition, of: width/VCInfo.radarImageRatioNameOnly)
         personScrollView.addSubview(faceView)
         // add label
         var text = String()

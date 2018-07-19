@@ -76,9 +76,6 @@
                                     <constraint firstAttribute="width" constant="50" id="mw3-5h-m2A"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="star"/>
-                                <connections>
-                                    <action selector="goBookmark:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l8j-A4-0fV"/>
-                                </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ThF-5G-zKe">
                                 <rect key="frame" x="0.0" y="145" width="375" height="522"/>

@@ -38,6 +38,10 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+//    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+//        self.mapScrollView.contentSize = self.view.bounds.size;
+//    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -150,10 +154,12 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
     func setSearchingText() {
         searchingText.delegate = self
         searchingText.clearButtonMode = UITextFieldViewMode.always
+        searchingText.returnKeyType = .done
     }
     
     func setBookmarkButton() {
         bookmarkButton.setImage(UIImage(named: VCInfo.mapStar), for: .normal)
+        bookmarkButton.frame = CGRect(x: searchingText.frame.minX, y: searchingText.frame.maxY, width: VCInfo.smallButtonSize, height: VCInfo.smallButtonSize)
         bookmarkButton.addTarget(self, action: #selector(goBookmark(_:)), for: .touchUpInside)
     }
     
@@ -166,11 +172,11 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
                 let width = mapImage.frame.width
                 let height = mapImage.frame.height
 //                let mapY = (view.frame.height - view.frame.width / CGFloat(School.map.0 / School.map.1)) / 2
-                let iconX = width * CGFloat(school.position.0) - 5
-                let iconY = height * CGFloat(school.position.1) - 5 // + mapY
+                let iconX = width * CGFloat(school.position.0) - VCInfo.mapIconDelta
+                let iconY = height * CGFloat(school.position.1) - VCInfo.mapIconDelta
 //                iconButton.setTitle(school.longName, for: .normal)
                 iconButton.setImage(icon, for: .normal)
-                iconButton.frame = CGRect(x: iconX, y: iconY, width: 10, height: 10)
+                iconButton.frame = CGRect(x: iconX, y: iconY, width: VCInfo.mapIconSize, height: VCInfo.mapIconSize)
                 iconButton.addTarget(self, action: #selector(Selection(_:)), for: .touchUpInside)
                 icons.append(iconButton)
                 
@@ -209,8 +215,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
     }
     
     func setScrollView() {
-        mapScrollView.minimumZoomScale = 1.0
-        mapScrollView.maximumZoomScale = 8.0
+        mapScrollView.minimumZoomScale = VCInfo.minZoomRatio
+        mapScrollView.maximumZoomScale = VCInfo.maxZoomRatio
         mapScrollView.frame = view.frame
         mapScrollView.pinchGestureRecognizer?.isEnabled = true
         mapScrollView.panGestureRecognizer.isEnabled = true
@@ -222,10 +228,11 @@ class MapViewController: UIViewController, UIScrollViewDelegate, UITextFieldDele
         let imageViewDoubleTap = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTapScrollView(recognizer:)))
         imageViewDoubleTap.numberOfTapsRequired = 2
         mapScrollView.addGestureRecognizer(imageViewDoubleTap)
-        let width = view.frame.width
-        let height = view.frame.width / CGFloat(School.map.0 / School.map.1)
-        let mapY = (view.frame.height - view.frame.width / CGFloat(School.map.0 / School.map.1)) / 2
-        mapImage.frame = CGRect(x: 0, y: mapY, width: width, height: height)
+        let width = view.frame.width<view.frame.height ? view.frame.width : view.frame.height
+        let height = width / CGFloat(School.map.0 / School.map.1)
+        let mapX = (view.frame.width - width) / 2
+        let mapY = (view.frame.height - height) / 2
+        mapImage.frame = CGRect(x: mapX, y: mapY, width: width, height: height)
         mapImage.isUserInteractionEnabled = true
 //        mapScrollView.contentMode = .scaleAspectFit
         mapScrollView.addSubview(mapImage)
